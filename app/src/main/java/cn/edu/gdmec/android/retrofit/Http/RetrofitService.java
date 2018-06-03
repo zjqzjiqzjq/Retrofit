@@ -15,5 +15,6 @@ public interface RetrofitService {
     Call<NewsBean> getNews(@Path("type") String type,
                            @Path("id") String id,
                            @Path("startPage") int startPage);
-    Call<MovieBean> getNews();
+    @GET("v2/movie/{type}")
+    Call<MovieBean> getMovie(@Path("type") String type);
 }

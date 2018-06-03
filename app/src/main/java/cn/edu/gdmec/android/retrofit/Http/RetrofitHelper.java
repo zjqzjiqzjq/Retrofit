@@ -30,8 +30,8 @@ public class RetrofitHelper {
         return retrofitService.getNews(type, id, startPage);
     }
 
-    public Call<MovieBean> getMovie(){
-        return retrofitService.getNews();
+    public Call<MovieBean> getMovie(String type){
+        return retrofitService.getMovie(type);
     }
 
     public OkHttpClient getOkHttpClient() {
@@ -43,4 +43,5 @@ public class RetrofitHelper {
         }
         return okHttpClient;
     }
+
 }

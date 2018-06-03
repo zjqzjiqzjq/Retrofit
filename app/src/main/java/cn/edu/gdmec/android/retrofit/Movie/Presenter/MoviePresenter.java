@@ -1,6 +1,7 @@
 package cn.edu.gdmec.android.retrofit.Movie.Presenter;
 
 import cn.edu.gdmec.android.retrofit.Bean.MovieBean;
+import cn.edu.gdmec.android.retrofit.Http.Api;
 import cn.edu.gdmec.android.retrofit.Movie.Model.IMovieModel;
 import cn.edu.gdmec.android.retrofit.Movie.Model.IOnLoadListener;
 import cn.edu.gdmec.android.retrofit.Movie.Model.MovieModel;
@@ -20,16 +21,16 @@ public class MoviePresenter implements IMoviePresenter,IOnLoadListener{
     }
 
     @Override
-    public void loadNews() {
+    public void loadMovie() {
         iMovieView.showDialog();
-        iMovieModel.loadMovie(this);
+        iMovieModel.loadMovie("headline", Api.MOVIE_ID,this);
     }
 
     @Override
-    public void success(MovieBean movieBean) {
+    public void successmov(MovieBean movieBean) {
         iMovieView.hideDialog();
         if (movieBean != null){
-            iMovieView.showNews(movieBean);
+            iMovieView.showMovie(movieBean);
         }
     }
 

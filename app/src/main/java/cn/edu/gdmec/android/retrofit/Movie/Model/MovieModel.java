@@ -13,17 +13,16 @@ import retrofit2.Response;
 
 public class MovieModel implements IMovieModel {
     @Override
-    public void loadMovie(final IOnLoadListener iOnLoadListener) {
+    public void loadMovie(final String hostType,final String type,final IOnLoadListener iOnLoadListener) {
         RetrofitHelper retrofitHelper = new RetrofitHelper(Api.Movie_HOST);
-        retrofitHelper.getMovie().enqueue(new Callback<MovieBean>() {
+        retrofitHelper.getMovie(type).enqueue(new Callback<MovieBean>() {
             @Override
             public void onResponse(Call<MovieBean> call, Response<MovieBean> response) {
                 if (response.isSuccessful()){
-                    iOnLoadListener.success(response.body());
+                    iOnLoadListener.successmov(response.body());
                 }else {
                     iOnLoadListener.fail("");
                 }
-
             }
 
             @Override
@@ -32,4 +31,5 @@ public class MovieModel implements IMovieModel {
             }
         });
     }
+
 }

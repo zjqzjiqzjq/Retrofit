@@ -6,5 +6,5 @@ package cn.edu.gdmec.android.retrofit.Movie.Model;
  */
 
 public interface IMovieModel {
-    void loadMovie(IOnLoadListener iOnLoadListener);
+    void loadMovie(String hostType,String type,IOnLoadListener iOnLoadListener);
 }

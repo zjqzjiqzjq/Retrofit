@@ -5,5 +5,5 @@ package cn.edu.gdmec.android.retrofit.Movie.Presenter;
  */
 
 public interface IMoviePresenter {
-    void loadNews();
+    void loadMovie();
 }

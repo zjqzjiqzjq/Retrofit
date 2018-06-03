@@ -15,6 +15,7 @@ public class NewsModel implements INewsModel {
     @Override
     public void loadNews(final String hostType,final int startPage,final String id,final IOnLoadListener iOnLoadListener) {
         RetrofitHelper retrofitHelper = new RetrofitHelper(Api.NEWS_HOST);
+        //enqueue异步请求
         retrofitHelper.getNews(hostType,id,startPage).enqueue(new Callback<NewsBean>() {
             @Override
             public void onResponse(Call<NewsBean> call, Response<NewsBean> response) {

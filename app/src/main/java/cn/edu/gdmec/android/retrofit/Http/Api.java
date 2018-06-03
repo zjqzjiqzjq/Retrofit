@@ -10,5 +10,6 @@ public class Api {
     public static final String NBA_ID = "T1348649145984";
     public static final String JOKE_ID = "T1350383429665";
 
-    public static final String Movie_HOST = "https://api.douban.com/v2/movie/in_theaters";
+    public static final String Movie_HOST = "https://api.douban.com";
+    public static final String MOVIE_ID = "in_theaters";
 }

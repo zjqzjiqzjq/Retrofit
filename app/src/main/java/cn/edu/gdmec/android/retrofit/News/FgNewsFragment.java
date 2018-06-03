@@ -53,5 +53,4 @@ public class FgNewsFragment extends Fragment  {
         MyFragmentAdapter adapter = new MyFragmentAdapter(getChildFragmentManager(),fragments,fragmentTitles);
         vp_news.setAdapter(adapter);
     }
-
 }
