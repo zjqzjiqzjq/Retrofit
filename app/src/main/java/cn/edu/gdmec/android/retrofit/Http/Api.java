@@ -12,4 +12,5 @@ public class Api {
 
     public static final String Movie_HOST = "https://api.douban.com";
     public static final String MOVIE_ID = "in_theaters";
+    public static final String MOVIE_ID2 = "top250";
 }

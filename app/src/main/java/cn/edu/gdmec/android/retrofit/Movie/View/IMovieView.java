@@ -9,6 +9,6 @@ import cn.edu.gdmec.android.retrofit.Bean.MovieBean;
 public interface IMovieView {
     void hideDialog();
     void showMovie(MovieBean movieBean);
-    void showErrorMsg(String error);
+    void showErrorMsg(Throwable throwable);
     void showDialog();
 }

@@ -21,9 +21,9 @@ public class MoviePresenter implements IMoviePresenter,IOnLoadListener{
     }
 
     @Override
-    public void loadMovie() {
+    public void loadMovie(String type) {
         iMovieView.showDialog();
-        iMovieModel.loadMovie("headline", Api.MOVIE_ID,this);
+        iMovieModel.loadMovie(type,this);
     }
 
     @Override
@@ -35,8 +35,10 @@ public class MoviePresenter implements IMoviePresenter,IOnLoadListener{
     }
 
     @Override
-    public void fail(String error) {
+    public void fail(Throwable throwable) {
         iMovieView.hideDialog();
-        iMovieView.showErrorMsg(error);
+        iMovieView.showErrorMsg(throwable);
     }
+
+
 }

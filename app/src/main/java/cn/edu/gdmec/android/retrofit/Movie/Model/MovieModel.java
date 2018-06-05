@@ -16,7 +16,7 @@ import rx.schedulers.Schedulers;
 
 public class MovieModel implements IMovieModel {
     @Override
-    public void loadMovie(final String hostType,final String type,final IOnLoadListener iOnLoadListener) {
+    public void loadMovie(final String type,final IOnLoadListener iOnLoadListener) {
         RetrofitHelper retrofitHelper = new RetrofitHelper(Api.Movie_HOST);
         retrofitHelper.getMovie(type).observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
@@ -28,7 +28,7 @@ public class MovieModel implements IMovieModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        iOnLoadListener.fail(e.getMessage());
+                        iOnLoadListener.fail(e);
                     }
 
                     @Override

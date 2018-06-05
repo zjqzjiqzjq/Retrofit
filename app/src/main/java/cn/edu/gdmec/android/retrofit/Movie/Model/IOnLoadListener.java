@@ -8,5 +8,5 @@ import cn.edu.gdmec.android.retrofit.Bean.MovieBean;
 
 public interface IOnLoadListener {
     void successmov(MovieBean movieBean);
-    void fail(String error);
+    void fail(Throwable throwable);
 }
