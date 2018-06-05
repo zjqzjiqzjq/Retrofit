@@ -2,19 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="120dp"
     android:layout_height="wrap_content"
-    android:id="@+id/rl_movie_top"
+    android:id="@+id/rl_movie_on"
     android:layout_margin="5dp"
     android:orientation="vertical">
     <ImageView
-        android:layout_width="90dp"
-        android:layout_height="130dp"
+        android:layout_width="100dp"
+        android:layout_height="125dp"
+        android:layout_gravity="center"
         android:id="@+id/iv_movie_top"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_movie_top_title"
+        android:layout_marginBottom="5dp"
         android:layout_gravity="center"
-        android:textSize="16dp"
+        android:textSize="15dp"
         android:textColor="@color/text_common"/>
 
 </LinearLayout>

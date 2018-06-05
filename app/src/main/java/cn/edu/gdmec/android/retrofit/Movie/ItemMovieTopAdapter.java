@@ -51,7 +51,7 @@ public class ItemMovieTopAdapter extends RecyclerView.Adapter<ItemMovieTopAdapte
                 .load(bean.getImages().getSmall())
                 .into(holder.ivMovieTop);
         holder.tvMovieTopTitle.setText(bean.getTitle());
-        holder.rlMovieTop.setOnClickListener(new View.OnClickListener() {
+        holder.rl_movie_on.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ADetailActivity.class);
@@ -73,13 +73,13 @@ public class ItemMovieTopAdapter extends RecyclerView.Adapter<ItemMovieTopAdapte
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder {
-        private LinearLayout rlMovieTop;
+        private LinearLayout rl_movie_on;
         private ImageView ivMovieTop;
         private TextView tvMovieTopTitle;
 
         public ViewHolder(View view) {
             super(view);
-            rlMovieTop = (LinearLayout) view.findViewById(R.id.rl_movie_top);
+            rl_movie_on = (LinearLayout) view.findViewById(R.id.rl_movie_on);
             ivMovieTop = (ImageView) view.findViewById(R.id.iv_movie_top);
             tvMovieTopTitle = (TextView) view.findViewById(R.id.tv_movie_top_title);
         }

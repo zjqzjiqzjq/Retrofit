@@ -30,7 +30,6 @@ public class FgMovieFragment extends Fragment implements IMovieView {
     private ItemMovieTopAdapter movieTopAdapter;
     private SwipeRefreshLayout srl_movie;
     private RecyclerView rv_movie_top;
-    private SwipeRefreshLayout srl_movie_top;
     private int type;
 
     @Override
@@ -47,29 +46,26 @@ public class FgMovieFragment extends Fragment implements IMovieView {
         moviePresenter = new MoviePresenter(this);
         srl_movie = view.findViewById(R.id.srl_movie);
         rv_movie_on = view.findViewById(R.id.rv_movie_hot);
-        srl_movie_top = view.findViewById(R.id.srl_movie_top);
         rv_movie_top = view.findViewById(R.id.rv_movie_top);
 
         movieOnAdapter = new ItemMovieOnAdapter(getActivity());
         movieTopAdapter = new ItemMovieTopAdapter(getActivity());
         srl_movie.setColorSchemeColors(Color.parseColor("#ffce3d3a"));
-        srl_movie_top.setColorSchemeColors(Color.parseColor("#ffce3d3a"));
 
 
         moviePresenter.loadMovie(Api.MOVIE_ID);
+        moviePresenter.loadMovie(Api.MOVIE_ID2);
+
 
         srl_movie.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 moviePresenter.loadMovie(Api.MOVIE_ID);
-            }
-        });
-        srl_movie_top.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
                 moviePresenter.loadMovie(Api.MOVIE_ID2);
+
             }
         });
+
 
     }
 
@@ -84,9 +80,9 @@ public class FgMovieFragment extends Fragment implements IMovieView {
         movieTopAdapter.setData(movieBean.getSubjects());
         rv_movie_on.setLayoutManager(new LinearLayoutManager(getActivity()));
         rv_movie_on.setAdapter(movieOnAdapter);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        rv_movie_top.setLayoutManager(linearLayoutManager);
+        rv_movie_top.setLayoutManager(new LinearLayoutManager(getActivity(),
+                LinearLayoutManager.HORIZONTAL,false));
+        rv_movie_top.setHorizontalScrollBarEnabled(true);
         rv_movie_top.setAdapter(movieTopAdapter);
     }
 
