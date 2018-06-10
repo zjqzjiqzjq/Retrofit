@@ -63,6 +63,7 @@ public class ItemMovieOnAdapter extends RecyclerView.Adapter<ItemMovieOnAdapter.
             }
         }
         holder.tvMovieOnDirectors.setText("导演："+directors);
+
         String casts="";
 
         if (bean.getCasts().size()!=0){

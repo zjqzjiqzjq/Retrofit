@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit;
 import cn.edu.gdmec.android.retrofit.Bean.MovieBean;
 import cn.edu.gdmec.android.retrofit.Bean.NewsBean;
 import okhttp3.OkHttpClient;
-import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;

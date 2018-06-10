@@ -22,15 +22,14 @@ import cn.edu.gdmec.android.retrofit.Movie.View.IMovieView;
 import cn.edu.gdmec.android.retrofit.R;
 
 
-public class FgMovieFragment extends Fragment implements IMovieView {
+public class FgMovieFragment extends Fragment implements IMovieView , View.OnClickListener{
 
     private MoviePresenter moviePresenter;
-    private RecyclerView rv_movie_on;
     private ItemMovieOnAdapter movieOnAdapter;
     private ItemMovieTopAdapter movieTopAdapter;
     private SwipeRefreshLayout srl_movie;
     private RecyclerView rv_movie_top;
-    private int type;
+    private RecyclerView rv_movie_on;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -94,6 +93,11 @@ public class FgMovieFragment extends Fragment implements IMovieView {
     @Override
     public void showDialog() {
         srl_movie.setRefreshing(true);
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }
 
