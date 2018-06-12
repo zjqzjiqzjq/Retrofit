@@ -5,6 +5,9 @@ import java.util.concurrent.TimeUnit;
 
 import cn.edu.gdmec.android.retrofit.Bean.MovieBean;
 import cn.edu.gdmec.android.retrofit.Bean.NewsBean;
+import cn.edu.gdmec.android.retrofit.Bean.TodayBean;
+import cn.edu.gdmec.android.retrofit.Bean.VideoUrlBean;
+import cn.edu.gdmec.android.retrofit.Bean.WeatherBean;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -35,6 +38,18 @@ public class RetrofitHelper {
 
     public Observable<MovieBean> getMovie(String type){
         return retrofitService.getMovie(type);
+    }
+
+    public Observable<TodayBean> getToday(String category){
+        return retrofitService.getToday(category);
+    }
+
+    public Observable<VideoUrlBean> getVideoUrl(String api){
+        return retrofitService.getVideoUrl(api);
+    }
+
+    public Observable<WeatherBean> getWeather(Integer citykey){
+        return retrofitService.getWeather(citykey);
     }
 
     public OkHttpClient getOkHttpClient() {

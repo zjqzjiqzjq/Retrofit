@@ -13,4 +13,8 @@ public class Api {
     public static final String Movie_HOST = "https://api.douban.com";
     public static final String MOVIE_ID = "in_theaters";
     public static final String MOVIE_ID2 = "top250";
+
+    public static final String TODAY_HOST = "http://is.snssdk.com/api/";
+
+    public static final String WEATHER_HOST = "http://wthrcdn.etouch.cn/";
 }
