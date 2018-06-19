@@ -5,5 +5,5 @@ package cn.edu.gdmec.android.retrofit.Video.Presenter;
  */
 
 public interface IVideoPresenter {
-    void loadVideo();
+    void loadVideo(Boolean yes);
 }

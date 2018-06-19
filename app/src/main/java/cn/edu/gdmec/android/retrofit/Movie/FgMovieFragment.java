@@ -30,6 +30,8 @@ public class FgMovieFragment extends Fragment implements IMovieView , View.OnCli
     private SwipeRefreshLayout srl_movie;
     private RecyclerView rv_movie_top;
     private RecyclerView rv_movie_on;
+    private LinearLayoutManager layoutManager;
+    private int start = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,19 +54,29 @@ public class FgMovieFragment extends Fragment implements IMovieView , View.OnCli
         srl_movie.setColorSchemeColors(Color.parseColor("#ffce3d3a"));
 
 
-        moviePresenter.loadMovie(Api.MOVIE_ID);
-        moviePresenter.loadMovie(Api.MOVIE_ID2);
+        moviePresenter.loadMovie(Api.MOVIE_ID,0);
+        moviePresenter.loadMovie(Api.MOVIE_ID2,0);
 
 
         srl_movie.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                moviePresenter.loadMovie(Api.MOVIE_ID);
-                moviePresenter.loadMovie(Api.MOVIE_ID2);
+                moviePresenter.loadMovie(Api.MOVIE_ID,0);
+                moviePresenter.loadMovie(Api.MOVIE_ID2,0);
 
             }
         });
 
+        rv_movie_on.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE &&
+                        (layoutManager.findLastVisibleItemPosition() + 1) == layoutManager.getItemCount()) {
+                    start += 20;
+                    moviePresenter.loadMovie(Api.MOVIE_ID, start);
+                }
+            }
+        });
 
     }
 
@@ -77,7 +89,8 @@ public class FgMovieFragment extends Fragment implements IMovieView , View.OnCli
     public void showMovie(MovieBean movieBean) {
         movieOnAdapter.setData(movieBean.getSubjects());
         movieTopAdapter.setData(movieBean.getSubjects());
-        rv_movie_on.setLayoutManager(new LinearLayoutManager(getActivity()));
+        layoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+        rv_movie_on.setLayoutManager(layoutManager);
         rv_movie_on.setAdapter(movieOnAdapter);
         rv_movie_top.setLayoutManager(new LinearLayoutManager(getActivity(),
                 LinearLayoutManager.HORIZONTAL,false));
@@ -86,8 +99,15 @@ public class FgMovieFragment extends Fragment implements IMovieView , View.OnCli
     }
 
     @Override
-    public void showErrorMsg(Throwable throwable) {
-        Toast.makeText(getContext(),"加载失败" + throwable.getMessage(),Toast.LENGTH_SHORT).show();
+    public void showMoreMovie(MovieBean movieBean) {
+        movieOnAdapter.addData(movieBean.getSubjects());
+        movieOnAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showErrorMsg(String throwable) {
+        movieOnAdapter.notifyItemRemoved(movieOnAdapter.getItemCount());
+        Toast.makeText(getContext(),"加载失败" + throwable,Toast.LENGTH_SHORT).show();
     }
 
     @Override

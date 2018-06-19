@@ -5,5 +5,5 @@ package cn.edu.gdmec.android.retrofit.Video.Model;
  */
 
 public interface IVideoModel {
-    void loadVideo(String category,IVideoLoadListener iViedeoLoadListener);
+    void loadVideo(String category, Boolean yes,IVideoLoadListener iViedeoLoadListener);
 }

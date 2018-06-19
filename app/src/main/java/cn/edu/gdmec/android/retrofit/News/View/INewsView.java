@@ -9,6 +9,7 @@ import cn.edu.gdmec.android.retrofit.Bean.NewsBean;
 public interface INewsView {
     void hideDialog();
     void showNews(NewsBean newsBean);
-    void showErrorMsg(String error);
+    void showMoreNews(NewsBean newsBean);
+    void showErrorMsg(Throwable throwable);
     void showDialog();
 }

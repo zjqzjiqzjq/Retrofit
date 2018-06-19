@@ -11,6 +11,7 @@ import cn.edu.gdmec.android.retrofit.Bean.TodayContentBean;
 public interface IVideoView {
     void hideDialog();
     void showVideo(List<TodayContentBean> todayContentBeans,List<String> videoList);
+    void showMoreVideo(List<TodayContentBean> todayContentBeans, List<String> videoList);
     void showErrorMsg(Throwable throwable);
     void showDialog();
 }

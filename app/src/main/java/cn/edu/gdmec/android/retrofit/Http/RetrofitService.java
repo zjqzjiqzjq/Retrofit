@@ -23,7 +23,8 @@ public interface RetrofitService {
                                  @Path("startPage") int startPage);
 
     @GET("v2/movie/{type}")
-    Observable<MovieBean> getMovie(@Path("type") String type);
+    Observable<MovieBean> getMovie(@Path("type") String type,
+                                   @Query("start") int start);
 
 
     /*http://is.snssdk.com/api/news/feed/v51/?category=video*/

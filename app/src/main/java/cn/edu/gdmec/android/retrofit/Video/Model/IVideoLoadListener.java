@@ -10,6 +10,7 @@ import cn.edu.gdmec.android.retrofit.Bean.VideoUrlBean;
  */
 
 public interface IVideoLoadListener {
-    void videoUrlSuccess(List<VideoUrlBean> videoUrlBeans, List<TodayContentBean> contentBeans);
+    void videoUrlSuccess(List<VideoUrlBean> videoUrlBeans, List<TodayContentBean> contentBeans,Boolean yes);
     void fail(Throwable throwable);
+
 }

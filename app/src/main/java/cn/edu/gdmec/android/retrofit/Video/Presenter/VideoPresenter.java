@@ -21,7 +21,7 @@ import cn.edu.gdmec.android.retrofit.Video.View.IVideoView;
  */
 
 public class VideoPresenter implements IVideoPresenter, IVideoLoadListener {
-
+    private static final String TAG = "VideoPresenter";
     private IVideoModel iVideoModel;
     private IVideoView iVideoView;
 
@@ -31,13 +31,16 @@ public class VideoPresenter implements IVideoPresenter, IVideoLoadListener {
     }
 
     @Override
-    public void loadVideo() {
-        iVideoView.showDialog();
-        iVideoModel.loadVideo("video",this);
+    public void loadVideo(Boolean yes) {
+        if (yes==true){
+            iVideoView.showDialog();
+        }
+
+        iVideoModel.loadVideo("video",yes, this);
     }
 
     @Override
-    public void videoUrlSuccess(List<VideoUrlBean> mainUrlBeans, List<TodayContentBean> contentBeans) {
+    public void videoUrlSuccess(List<VideoUrlBean> mainUrlBeans, List<TodayContentBean> contentBeans,Boolean yes) {
         List<String> videoList = new ArrayList<>();
         iVideoView.hideDialog();
         for (int i = 0; i < mainUrlBeans.size(); i++) {
@@ -45,7 +48,11 @@ public class VideoPresenter implements IVideoPresenter, IVideoLoadListener {
             final String url1 = (new String(Base64.decode(mainUrl.getBytes(), Base64.DEFAULT)));
             videoList.add(url1);
         }
-        iVideoView.showVideo(contentBeans, videoList);
+        if (yes){
+            iVideoView.showVideo(contentBeans,videoList);
+        }else {
+            iVideoView.showMoreVideo(contentBeans,videoList);
+        }
     }
 
     @Override
